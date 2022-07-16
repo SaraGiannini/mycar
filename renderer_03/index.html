@@ -1,0 +1,110 @@
+<html>
+
+  <head>
+
+    <script type="text/javascript">
+        function log(msg){
+			var textarea = document.getElementById("log");
+			textarea.innerHTML += (msg + "\n");
+			textarea.scrollTop = textarea.scrollHeight;
+        }
+    </script>
+	
+		<link rel="stylesheet" href="style.css">
+		
+        <script type="text/javascript" src="./../common/libs/glMatrix/dist/gl-matrix.js"></script>
+        <script type="text/javascript" src="./../common/libs/matrix-stack.js"> </script>
+		
+        <script type="text/javascript" src="./../common/shapes/track_maker.js"> </script>
+        <script type="text/javascript" src="./../common/shapes/building_maker.js"> </script>
+        <script type="text/javascript" src="./../common/shapes/quadrilateral.js"> </script>
+        <script type="text/javascript" src="./../common/shapes/triangle_car.js"></script>
+
+        <script type="text/javascript" src="./../common/shapes/cube.js"> </script>
+        <script type="text/javascript" src="./../common/shapes/cone.js"> </script>
+        <script type="text/javascript" src="./../common/shapes/cylinder.js"> </script>
+        <script type="text/javascript" src="./../common/models/teapot.json"></script>
+        <script type="text/javascript" src="./../common/models/sphere.json"></script>
+
+        <script type="text/javascript" src="./../common/scenes/scene_0.js"> </script>
+		
+        <script type="text/javascript" src="./../common/game.js"></script>
+        <script type="text/javascript" src="./../common/compute_normals.js"></script>
+        <script type="text/javascript" src="./../common/json_gpu_loader.js"></script>
+
+		<script type="text/javascript" src="./shaders.js"> </script>
+		<script type="text/javascript" src="./depth_shader.js"> </script>
+        <script type="text/javascript" src="./main.js"> </script>    
+        
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="column">
+        <div tabindex="1">
+          <canvas  tabindex='1'
+              id     = "OUTPUT-CANVAS"
+              width  = "600px"
+              height = "600px"
+              style  = "border: 1px solid black"
+          ></canvas>
+        </div>
+		<textarea id="log" rows="4" cols="79"></textarea>
+      </div>
+     
+	  <div class="column">
+      <div>
+	  <b>Camera settings</b><br>
+        <div class="row">
+          <div class="column">
+            <label for="cameras">Choose a camera:</label><br>
+            <select name="cameras" id="cameras" onchange="update_camera(this.value)">
+              <option value="0">FollowFromUp</option>
+              <option value="1">Chase</option>
+              <option value="2">Free</option>
+            </select>
+          </div>
+        </div>
+        <div>
+		<br>
+          <b>Instructions - keyboard:</b>
+          <div class="row">
+            <div class="column">
+              <div class="row">
+                <div class="column">
+                  Car controls:
+				  <br>
+				  <kbd>W</kbd> - move forward
+				  <br>
+				  <kbd>S</kbd> - move backward
+				  <br>
+				  <kbd>A</kbd> - steer left 
+				  <br>
+				  <kbd>D</kbd> - steer right 
+				  <br><br>
+				  Camera controls in Free mode:
+				  <br>
+				  <kbd>I</kbd> - go closer
+				  <br>
+				  <kbd>K</kbd> - get away
+				  <br>
+				  <kbd>J</kbd> - go left
+				  <br>
+				  <kbd>L</kbd> - go right
+				  <br>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        </div>
+      
+      </div>
+    </div>
+
+  </body>
+
+</html>
+
